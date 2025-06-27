@@ -5,98 +5,113 @@ import "./App.css";
 const App = () => {
   const navigate = useNavigate();
 
+  const [step, setStep] = useState(1); // 1 = Q1, 2 = Q2
   const [message, setMessage] = useState(null);
   const [yesSize, setYesSize] = useState(1);
-
-  const handleNoClick = () => {
-    switch (yesSize) {
-      case 1:
-        setMessage("Ena Pasama Pesamata!");
-        break;
-      case 2:
-        setMessage("Naane Kozhandha!");
-        break;
-      case 3:
-        setMessage("Hey Mental Adichiduvan pathuko!");
-        break;
-      case 4:
-        setMessage(
-          "Hey Mental! Yes Press Panu Idhuku Mela Onu Ila No Press Panna Varadhuku!"
-        );
-        break;
-      default:
-        setMessage(null);
-        break;
-    }
-    setYesSize((prevSize) => prevSize + 1);
-  };
 
   const [message2, setMessage2] = useState(null);
   const [yesSize2, setYesSize2] = useState(1);
 
-  const handleNo2Click = () => {
-    switch (yesSize2) {
+  const handleNoClick = () => {
+    let msg = "";
+    switch (yesSize) {
       case 1:
-        setMessage2("Naane Kozhandha!");
+        msg = "Ena Pasama Pesamata!";
         break;
       case 2:
-        setMessage2("Nee iruthu than aaganum vera option ellam ila!");
+        msg = "Naane Kozhandha!";
+        break;
+      case 3:
+        msg = "Hey Mental Adichiduvan pathuko!";
+        break;
+      case 4:
+        msg = "Hey Mental! Yes Press Panu Idhuku Mela Onu Ila No Press Panna Varadhuku!";
         break;
       default:
-        setMessage2(null);
+        msg = "🤪";
         break;
     }
-    setYesSize2((prevSize) => prevSize + 1);
+    setYesSize((prev) => prev + 1);
+    setMessage(msg);
+    // Do NOT move to question 2
   };
 
   const handleYesClick = () => {
-    navigate("/Act");
+    setMessage("Awwww 💕 Naanum pesuran da 😍");
+    setTimeout(() => {
+      setStep(2); // Move to question 2 after 10 sec
+    }, 10000);
+  };
+
+  const handleNo2Click = () => {
+    let msg = "";
+    switch (yesSize2) {
+      case 1:
+        msg = "Naane Kozhandha!";
+        break;
+      case 2:
+        msg = "Nee iruthu than aaganum vera option ellam ila!";
+        break;
+      default:
+        msg = "Kandipa irukanum!";
+        break;
+    }
+    setYesSize2((prev) => prev + 1);
+    setMessage2(msg);
   };
 
   const handleYes2Click = () => {
-    navigate("/Act");
+    setMessage2("Epavum Bestfrnd ah irukalam 💖");
+    setTimeout(() => {
+      navigate("/Act");
+    }, 1000);
   };
 
   return (
     <div className="container">
-      <h1>Oii   Thakaliii unkita question kekava</h1>
-      <h1>Question 1: Pasama Pesuviya?</h1>
-      <img
-        src="https://i.pinimg.com/originals/74/c8/b9/74c8b9ec15202192a09c540d75e14aa6.gif"
-        alt="Bubududu GIF"
-        style={{ width: "300px" }}
-      />
-      <button className="no-button" onClick={handleNoClick}>
-        No
-      </button>
-      <button
-        id="yesButton"
-        className={`yes-button ${yesSize > 1 ? "larger" : ""}`}
-        onClick={handleYesClick}
-      >
-        Yes
-      </button>
+      {step === 1 && (
+        <>
+          <h1>Question: Pasama Pesuviya?</h1>
+          <img
+            src="https://i.pinimg.com/originals/74/c8/b9/74c8b9ec15202192a09c540d75e14aa6.gif"
+            alt="Bubududu GIF"
+            style={{ width: "300px" }}
+          />
+          <button className="no-button" onClick={handleNoClick}>
+            No
+          </button>
+          <button
+            id="yesButton"
+            className={`yes-button ${yesSize > 1 ? "larger" : ""}`}
+            onClick={handleYesClick}
+          >
+            Yes
+          </button>
+          {message && <p className="message">{message}</p>}
+        </>
+      )}
 
-      {message && <p className="message">{message}</p>}
-
-      <h1>Question 2: En kuda irupiya epavum bestfrnd ah?</h1>
-      <img
-        src="https://i.pinimg.com/originals/74/c8/b9/74c8b9ec15202192a09c540d75e14aa6.gif"
-        alt="Bubududu GIF"
-        style={{ width: "300px" }}
-      />
-      <button className="no-button" onClick={handleNo2Click}>
-        No
-      </button>
-      <button
-        id="yesButton"
-        className={`yes-button ${yesSize2 > 1 ? "larger" : ""}`}
-        onClick={handleYes2Click}
-      >
-        Yes
-      </button>
-
-      {message2 && <p className="message">{message2}</p>}
+      {step === 2 && (
+        <>
+          <h1>Question: En kuda irupiya epavum bestfrnd ah?</h1>
+          <img
+            src="https://i.pinimg.com/originals/74/c8/b9/74c8b9ec15202192a09c540d75e14aa6.gif"
+            alt="Bubududu GIF"
+            style={{ width: "300px" }}
+          />
+          <button className="no-button" onClick={handleNo2Click}>
+            No
+          </button>
+          <button
+            id="yesButton"
+            className={`yes-button ${yesSize2 > 1 ? "larger" : ""}`}
+            onClick={handleYes2Click}
+          >
+            Yes
+          </button>
+          {message2 && <p className="message">{message2}</p>}
+        </>
+      )}
     </div>
   );
 };
