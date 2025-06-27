@@ -1,0 +1,44 @@
+/* App.css */
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.no-button {
+  font-size: 1em;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #ff4d4d; /* Red color for 'No' button */
+  color: #fff; /* White text color for 'No' button */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.no-button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.yes-button {
+  font-size: 1em;
+  padding: 10px 20px;
+  background-color: #ff69b4; /* Pink color for 'Yes' button */
+  color: #fff; /* White text color for 'Yes' button */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.yes-button.larger {
+  font-size: 1.5em; /* Larger font size for 'Yes' button when clicked */
+}
+
+.yes-button:hover {
+  background-color: #ff5280; /* Darker pink on hover */
+}
+
+.message {
+  margin-top: 20px;
+  color: #ff69b4; /* Pink color for the message */
+  font-weight: bold;
+}
