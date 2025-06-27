@@ -28,7 +28,7 @@ const App = () => {
         msg = "Hey Mental! Yes Press Panu Idhuku Mela Onu Ila No Press Panna Varadhuku!";
         break;
       default:
-        msg = "🤪";
+        msg = "Konuduvan pathuko🤪 yes solu";
         break;
     }
     setYesSize((prev) => prev + 1);
@@ -39,21 +39,21 @@ const App = () => {
   const handleYesClick = () => {
     setMessage("Awwww 💕 Naanum pesuran da 😍");
     setTimeout(() => {
-      setStep(2); // Move to question 2 after 10 sec
-    }, 10000);
+      setStep(2);
+    }, 3000);
   };
 
   const handleNo2Click = () => {
     let msg = "";
     switch (yesSize2) {
       case 1:
-        msg = "Naane Kozhandha!";
+        msg = "Ena nee irukama ena pana pora!";
         break;
       case 2:
         msg = "Nee iruthu than aaganum vera option ellam ila!";
         break;
       default:
-        msg = "Kandipa irukanum!";
+        msg = "Naa ellam unaku bestfrnd ah kedaika nee ena puniyam paniko..!";
         break;
     }
     setYesSize2((prev) => prev + 1);
@@ -61,7 +61,7 @@ const App = () => {
   };
 
   const handleYes2Click = () => {
-    setMessage2("Epavum Bestfrnd ah irukalam 💖");
+    setMessage2("Epavum Bestfrnd ah irukalam ena fight vanhdalum sari 💖");
     setTimeout(() => {
       navigate("/Act");
     }, 1000);
@@ -71,11 +71,16 @@ const App = () => {
     <div className="container">
       {step === 1 && (
         <>
+          <h1 style={{ color: "blue" }}>Oii unkita konjam question kekava</h1>
           <h1>Question: Pasama Pesuviya?</h1>
           <img
             src="https://i.pinimg.com/originals/74/c8/b9/74c8b9ec15202192a09c540d75e14aa6.gif"
             alt="Bubududu GIF"
-            style={{ width: "300px" }}
+            style={{
+           width: "300px",
+           borderTopLeftRadius: "149px",
+           borderBottomRightRadius: "112px"
+  }}
           />
           <button className="no-button" onClick={handleNoClick}>
             No
@@ -97,7 +102,11 @@ const App = () => {
           <img
             src="https://i.pinimg.com/originals/74/c8/b9/74c8b9ec15202192a09c540d75e14aa6.gif"
             alt="Bubududu GIF"
-            style={{ width: "300px" }}
+            style={{
+           width: "300px",
+           borderTopLeftRadius: "149px",
+           borderBottomRightRadius: "112px"
+  }}
           />
           <button className="no-button" onClick={handleNo2Click}>
             No

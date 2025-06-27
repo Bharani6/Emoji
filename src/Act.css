@@ -1,4 +1,28 @@
-h1{
-    color: palevioletred;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.act-container {
+  height: 100vh;
+  background-image: url(./Images/43b6b1c35afba9f2a52da49dacfefefc.gif);
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gif {
+  width: 300px;
+  border-radius: 20px;
+}
+h1 {
+    color: #b620b0;
     text-align: center;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 2.5rem;
+    margin-top: 20px;
 }
